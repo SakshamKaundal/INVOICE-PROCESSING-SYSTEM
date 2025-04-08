@@ -33,12 +33,13 @@ const AddInvoice = ({setAddInvoice,uinvoice,setUinvoice}) =>{
         setInvoice({ ...invoice, [e.target.name]:e.target.value});
     }
 
-    const addNewInvoice = async() =>{
-            setUinvoice(uinvoice+1);
-            await saveInvoice({ ...invoice,amount:Number(invoice['amount'])});
-
-            setAddInvoice(false);
-    }
+    const addNewInvoice = async () => {
+        const username = localStorage.getItem("username"); 
+        
+        await saveInvoice({ ...invoice, amount: Number(invoice["amount"]) }, username);
+        setUinvoice(uinvoice + 1);
+        setAddInvoice(false);
+    };
 
 
     return(

@@ -6,9 +6,13 @@ import java.util.List;
 
 public interface InvoiceService {
 
-    public Invoice addInvoice(Invoice invoice);
+    public Invoice addInvoice(Invoice invoice, String username);
 
-    public List<Invoice> getInvoices();
+    public List<Invoice> getInvoices(String username);
+
+    Invoice addInvoice(Invoice invoice);
+
+    List<Invoice> getInvoices();
 
     public Invoice deleteInvoice(long id);
 }

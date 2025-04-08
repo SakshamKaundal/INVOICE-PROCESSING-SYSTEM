@@ -1,9 +1,6 @@
 package com.invoiceprocessing.server.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Invoice {
@@ -16,17 +13,23 @@ public class Invoice {
     private String date;
     private String action;
 
-    public Invoice(){}
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
-    public Invoice(long id, String vendor, String product, int amount, String date, String action) {
+    public Invoice() {}
+
+    public Invoice(long id, String vendor, String product, int amount, String date, String action, User user) {
         this.id = id;
         this.vendor = vendor;
         this.product = product;
         this.amount = amount;
         this.date = date;
         this.action = action;
+        this.user = user;
     }
 
+    // Getters and Setters
     public long getId() {
         return id;
     }
@@ -73,5 +76,13 @@ public class Invoice {
 
     public void setAction(String action) {
         this.action = action;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

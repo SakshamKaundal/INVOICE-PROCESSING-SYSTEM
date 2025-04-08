@@ -1,5 +1,5 @@
 import {Table , TableHead , TableBody , TableCell, TableRow, Button} from '@mui/material';
-
+import './Invoice.css';
 const Invoices = ({invoices, removeInvoice}) => {
 
 
